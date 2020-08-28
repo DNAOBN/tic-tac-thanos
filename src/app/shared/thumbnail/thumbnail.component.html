@@ -1,0 +1,4 @@
+<img *ngIf="url; else empty" class="thumbnail" src="{{ url }}" />
+<ng-template #empty>
+  <div class="thumbnail"><h1>?</h1></div>
+</ng-template>
