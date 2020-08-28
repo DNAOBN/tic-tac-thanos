@@ -1,2 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.min.css";
+
+$defaultBg: #1e221e;
+$dark-green: #3c4128;
+$defaultBgLinear: linear-gradient(to right bottom, $dark-green, $defaultBg);
+$defaultText: #dfe8eb;
+$accent: rgb(119, 128, 119);
+$formBg: rgba($defaultBg, 0.7);
+$btn-success: #009500;
+$faded-white: rgba(#ffffff, 0.15);
+$half-faded-default: rgba($defaultBg, 0.5);
+
+html {
+  height: 100%;
+  background: $defaultBgLinear;
+}
+
+.modal-content {
+  background-color: $defaultBg;
+}
+
+.form-control {
+  background-color: $formBg;
+  border: rgba(black, 0.2);
+  color: $defaultText;
+}
+
+.form-control:focus {
+  @extend .form-control;
+  border-color: $accent;
+  box-shadow: 0 0 0 0.2rem rgba($accent, 0.25);
+}
