@@ -1,0 +1,13 @@
+@import "src/styles.scss";
+.app-modal {
+  color: $text-color;
+  border-radius: 0.3rem;
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+.btn-close {
+  color: $text-color;
+}

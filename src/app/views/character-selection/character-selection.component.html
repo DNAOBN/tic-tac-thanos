@@ -1,0 +1,49 @@
+<app-modal #selectionModal [closeable]="false">
+  <div class="container">
+    <div class="centered-row">
+      <h3 class="col-auto title">Bem vindos ao Tic-Tac-Thanos!</h3>
+    </div>
+    <div class="centered-row">
+      <div class="col-auto">Jogadores, escolham seus personagens:</div>
+    </div>
+    <div class="row justify-content-between">
+      <div class="col-5 player-combo">
+        <div class="centered-row">
+          <app-thumbnail [url]="playerImageUrl.get(1)"></app-thumbnail>
+        </div>
+        <div class="centered-row">
+          <input
+            [(ngModel)]="player1"
+            typeaheadOptionField="name"
+            [typeahead]="results1$"
+            [typeaheadAsync]="true"
+            typeaheadWaitMs="0"
+            (typeaheadOnSelect)="selectCharacter(1, $event.item)"
+            class="form-control"
+            placeholder="Digite o nome..."
+          />
+        </div>
+      </div>
+      <div class="col-5 player-combo">
+        <div class="centered-row">
+          <app-thumbnail [url]="playerImageUrl.get(2)"></app-thumbnail>
+        </div>
+        <div class="centered-row">
+          <input
+            [(ngModel)]="player2"
+            typeaheadOptionField="name"
+            [typeahead]="results2$"
+            [typeaheadAsync]="true"
+            typeaheadWaitMs="0"
+            (typeaheadOnSelect)="selectCharacter(2, $event.item)"
+            class="form-control"
+            placeholder="Digite o nome..."
+          />
+        </div>
+      </div>
+    </div>
+    <div class="centered-row">
+      <button class="btn btn-success col-auto">Jogar</button>
+    </div>
+  </div>
+</app-modal>
