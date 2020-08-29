@@ -9,18 +9,34 @@
     <div class="row justify-content-between">
       <div class="col-5 player-combo">
         <div class="centered-row">
-          <app-thumbnail url="{{ player1ImageUrl | async }}"></app-thumbnail>
+          <app-thumbnail [url]="playerImageUrl.get(1)"></app-thumbnail>
         </div>
         <div class="centered-row">
-          <input class="form-control" />
+          <input
+            [(ngModel)]="player1"
+            typeaheadOptionField="name"
+            [typeahead]="results1$"
+            [typeaheadAsync]="true"
+            typeaheadWaitMs="0"
+            (typeaheadOnSelect)="selectCharacter(1, $event.item)"
+            class="form-control"
+          />
         </div>
       </div>
       <div class="col-5 player-combo">
         <div class="centered-row">
-          <app-thumbnail url="{{ player1ImageUrl | async }}"></app-thumbnail>
+          <app-thumbnail [url]="playerImageUrl.get(2)"></app-thumbnail>
         </div>
         <div class="centered-row">
-          <input class="form-control" />
+          <input
+            [(ngModel)]="player2"
+            typeaheadOptionField="name"
+            [typeahead]="results2$"
+            [typeaheadAsync]="true"
+            typeaheadWaitMs="0"
+            (typeaheadOnSelect)="selectCharacter(2, $event.item)"
+            class="form-control"
+          />
         </div>
       </div>
     </div>
