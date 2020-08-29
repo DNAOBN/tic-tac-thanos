@@ -1,0 +1,18 @@
+$shadow-color: hsl(120, 6%, 13%);
+$midtone-color: hsl(120, 6%, 30%);
+$highlight-color: hsl(120, 6%, 45%);
+$accent-color: hsl(150, 45%, 30%);
+$accent2-color: hsl(150, 100%, 30%);
+
+$text-color: hsl(150, 22%, 90%);
+$white-faded: rgba(#ffffff, 0.15);
+
+$background-gradient: linear-gradient(
+  to right bottom,
+  $accent-color,
+  $shadow-color
+);
+
+$form-bg-color: rgba($shadow-color, 0.7);
+
+$element-size: 7.5rem;

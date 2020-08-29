@@ -1,33 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.min.css";
-
-$defaultBg: #1e221e;
-$dark-green: #3c4128;
-$defaultBgLinear: linear-gradient(to right bottom, $dark-green, $defaultBg);
-$defaultText: #dfe8eb;
-$accent: rgb(119, 128, 119);
-$formBg: rgba($defaultBg, 0.7);
-$btn-success: #009500;
-$faded-white: rgba(#ffffff, 0.15);
-$half-faded-default: rgba($defaultBg, 0.5);
+@import "src/variables.scss";
 
 html {
   height: 100%;
-  background: $defaultBgLinear;
+  background: $background-gradient;
 }
 
 .modal-content {
-  background-color: $defaultBg;
+  background-color: rgba($shadow-color, 0.7);
+}
+
+.modal-backdrop {
+  background-color: rgba(black, 0.5);
 }
 
 .form-control {
-  background-color: $formBg;
-  border: rgba(black, 0.2);
-  color: $defaultText;
+  background-color: $form-bg-color !important;
+  border: 1px solid $white-faded !important;
+  color: $text-color !important;
 }
 
 .form-control:focus {
   @extend .form-control;
-  border-color: $accent;
-  box-shadow: 0 0 0 0.2rem rgba($accent, 0.25);
+  border-color: $highlight-color;
+  box-shadow: 0 0 0 0.2rem rgba($highlight-color, 0.25) !important;
+}
+
+.btn-success {
+  background-color: $accent2-color !important;
+  border-color: $accent2-color !important;
+}
+
+.btn-success:disabled {
+  background-color: $midtone-color !important;
+  border-color: $midtone-color !important;
+  color: $highlight-color !important;
 }

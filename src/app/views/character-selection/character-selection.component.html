@@ -1,27 +1,31 @@
 <app-modal #selectionModal [closeable]="false">
   <div class="container">
-    <div class="row justify-content-center">
-      <h3 class="col-auto">Bem vindo ao Tic-Tac-Thanos!</h3>
+    <div class="centered-row">
+      <h3 class="col-auto title">Bem vindos ao Tic-Tac-Thanos!</h3>
     </div>
-    <div class="row justify-content-center">
-      <div class="col-auto">Escolham seus personagens:</div>
+    <div class="centered-row">
+      <div class="col-auto">Jogadores, escolham seus personagens:</div>
     </div>
     <div class="row justify-content-between">
-      <div class="col-5 text-center">
-        <app-thumbnail url="{{ player1ImageUrl | async }}"></app-thumbnail>
+      <div class="col-5 player-combo">
+        <div class="centered-row">
+          <app-thumbnail url="{{ player1ImageUrl | async }}"></app-thumbnail>
+        </div>
+        <div class="centered-row">
+          <input class="form-control" />
+        </div>
       </div>
-      <div class="col-5 text-center">
-        <app-thumbnail url="{{ player2ImageUrl | async }}"></app-thumbnail>
+      <div class="col-5 player-combo">
+        <div class="centered-row">
+          <app-thumbnail url="{{ player1ImageUrl | async }}"></app-thumbnail>
+        </div>
+        <div class="centered-row">
+          <input class="form-control" />
+        </div>
       </div>
     </div>
-    <div class="row justify-content-center">
-      <div class="col-5 text-center">
-        <input class="form-control" />
-      </div>
-      <div class="col-2 text-center align-self-center">VS</div>
-      <div class="col-5 text-center">
-        <input class="form-control" />
-      </div>
+    <div class="centered-row">
+      <button class="btn btn-success col-auto">Jogar</button>
     </div>
   </div>
 </app-modal>

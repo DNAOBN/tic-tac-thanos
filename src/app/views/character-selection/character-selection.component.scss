@@ -1,0 +1,23 @@
+@import "src/styles.scss";
+@import "bootstrap";
+
+.title {
+  margin-top: 0.15 * $element-size;
+  margin-bottom: 0.25 * $element-size;
+}
+
+.player-combo {
+  margin-top: 0.15 * $element-size;
+  margin-bottom: 0.35 * $element-size;
+}
+
+.centered-row {
+  @extend .row;
+  justify-content: center;
+}
+
+.form-control {
+  width: 1.4 * $element-size;
+  margin-top: 0.1 * $element-size;
+  justify-self: center;
+}
