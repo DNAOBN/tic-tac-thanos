@@ -1,0 +1,7 @@
+@import "src/variables.scss";
+
+.card {
+  background-color: $shadow-faded;
+  color: $text-color;
+  border-radius: 0.3rem;
+}
