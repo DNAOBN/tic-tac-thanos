@@ -1,8 +1,9 @@
-import { Observable, of, from, BehaviorSubject, Observer } from 'rxjs';
-import { MarvelService } from './../../services/marvel.service';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { MarvelService } from 'src/app/services/marvel.service';
 import { Component, ViewChild, AfterViewInit, OnInit } from '@angular/core';
 import { ModalComponent } from 'src/app/shared/modal/modal.component';
 import { switchMap, filter, tap, take, debounceTime } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-character-selection',
@@ -20,7 +21,7 @@ export class CharacterSelectionComponent implements OnInit, AfterViewInit {
   results1$;
   results2$;
 
-  constructor(private marvel: MarvelService) {}
+  constructor(private marvel: MarvelService, private router: Router) {}
 
   ngOnInit(): void {
     this.player1$ = new BehaviorSubject('');
@@ -77,5 +78,10 @@ export class CharacterSelectionComponent implements OnInit, AfterViewInit {
       player,
       `${character.thumbnail.path}/standard_large.${character.thumbnail.extension}`
     );
+  }
+
+  startGame(): void {
+    this.selectionModal.hide();
+    this.router.navigate(['game']);
   }
 }

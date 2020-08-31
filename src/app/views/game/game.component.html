@@ -1,0 +1,53 @@
+<div class="fullscreen">
+  <div class="card-column">
+    <app-card>
+      <div class="header">
+        <app-thumbnail url=""></app-thumbnail>
+      </div>
+      <div class="body">
+        {{ this.playerSymbols.getValue(1) }}
+      </div>
+    </app-card>
+  </div>
+  <div class="game-column">
+    <app-scoreboard
+      class="scoreboard"
+      [score1]="playerScores.get(1)"
+      [score2]="playerScores.get(2)"
+    ></app-scoreboard>
+    <app-board (win)="endGame($event)"></app-board>
+  </div>
+  <div class="card-column">
+    <app-card>
+      <div class="header">
+        <app-thumbnail url=""></app-thumbnail>
+      </div>
+      <div class="body">
+        {{ this.playerSymbols.getValue(2) }}
+      </div>
+    </app-card>
+  </div>
+</div>
+
+<app-modal #gameOver [closeable]="false">
+  <div class="container">
+    <div class="centered-row">
+      <h3 class="col-auto title">Bem vindos ao Tic-Tac-Thanos!</h3>
+    </div>
+    <div class="centered-row">
+      <div class="col-auto">Jogadores, escolham seus personagens:</div>
+    </div>
+    <div class="row justify-content-between">
+      <div class="col-5 player-combo">
+        <div class="centered-row">
+          <app-thumbnail [url]="playerImageUrl.get(1)"></app-thumbnail>
+        </div>
+      </div>
+      <div class="centered-row">
+        <button class="btn btn-success col-auto" (click)="startGame()">
+          Jogar
+        </button>
+      </div>
+    </div>
+  </div>
+</app-modal>

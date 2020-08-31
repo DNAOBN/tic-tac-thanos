@@ -1,0 +1,23 @@
+@import "src/variables.scss";
+.square {
+  width: 0.85 * $element-size;
+  height: 0.85 * $element-size;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  color: $white-faded;
+  line-height: $element-size;
+  font-size: 0.7 * $element-size;
+  text-align: center;
+  border: none;
+  border-radius: 0.3rem;
+}
+
+.square:focus {
+  outline: none;
+}
+
+.square:hover:not(:disabled) {
+  background-color: $white-faded;
+}

@@ -1,0 +1,35 @@
+@import "src/variables.scss";
+
+$sizes: (1, 2, 3, 4, 5);
+$positions: ("top", "bottom", "left", "right");
+
+@each $size in $sizes {
+  .board-#{$size} {
+    display: grid;
+    grid-template-columns: repeat($size, $element-size);
+    row-gap: 0px;
+    column-gap: 0px;
+  }
+}
+
+@each $size in $sizes {
+  .size-#{$size} {
+    max-height: $size * $element-size;
+    max-width: $size * $element-size;
+  }
+}
+
+@each $position in $positions {
+  .#{$position} {
+    border-#{$position}: 0px !important;
+  }
+}
+
+.square {
+  width: $element-size;
+  height: $element-size;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0.2rem solid $white-faded;
+}
