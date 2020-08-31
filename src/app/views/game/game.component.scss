@@ -1,8 +1,7 @@
 @import "src/variables.scss";
-@import "src/views/character-selection.component.scss";
 @import "bootstrap";
 
-.fullscreen {
+.game-screen {
   height: 100vh;
   display: flex;
   align-items: stretch;
@@ -13,6 +12,7 @@
 .card-column {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-grow: 1;
   padding: 1rem;
 }
@@ -20,18 +20,52 @@
 .game-column {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   flex-direction: column;
-  flex-grow: 7;
+  flex-grow: 4;
 }
 
-.header {
+.card-top {
   display: flex;
   justify-content: center;
   margin: 1rem;
 }
 
+.card-bottom {
+  text-align: center;
+}
+
+.title {
+  margin-top: 0.15 * $element-size;
+  margin-bottom: 0.25 * $element-size;
+}
+
 .scoreboard {
   margin-top: 0.25 * $element-size;
-  margin-bottom: 0.5 * $element-size;
+}
+
+.scoreboard-container {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.board {
+  align-self: center;
+}
+
+.winner-thumbnail {
+  margin-top: 0.1 * $element-size;
+  margin-bottom: 0.35 * $element-size;
+  background-color: rgba(gold, 0.5);
+  box-shadow: 0 0 0.3rem 0.1rem gold;
+}
+
+.btn-success {
+  margin-right: 0.75rem;
+}
+
+.btn-secondary {
+  background-color: $highlight-color;
 }

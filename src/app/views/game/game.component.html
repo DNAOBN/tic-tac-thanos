@@ -1,29 +1,37 @@
-<div class="fullscreen">
+<div class="scoreboard-container">
+  <app-scoreboard
+    class="scoreboard"
+    [score1]="players.get(0).score"
+    [score2]="players.get(1).score"
+  ></app-scoreboard>
+</div>
+<div class="game-screen">
   <div class="card-column">
     <app-card>
-      <div class="header">
-        <app-thumbnail url=""></app-thumbnail>
+      <div class="card-top">
+        <app-thumbnail [url]="players.get(0).thumbnail"></app-thumbnail>
       </div>
-      <div class="body">
-        {{ this.playerSymbols.getValue(1) }}
+      <div class="card-bottom">
+        <h4>{{ this.players.get(0).characterName }}</h4>
+        Símbolo: {{ this.playerSymbols.getValue(0) }}
       </div>
     </app-card>
   </div>
   <div class="game-column">
-    <app-scoreboard
-      class="scoreboard"
-      [score1]="playerScores.get(1)"
-      [score2]="playerScores.get(2)"
-    ></app-scoreboard>
-    <app-board (win)="endGame($event)"></app-board>
+    <app-board
+      class="board"
+      (win)="endGame($event)"
+      [reset]="restart"
+    ></app-board>
   </div>
   <div class="card-column">
     <app-card>
-      <div class="header">
-        <app-thumbnail url=""></app-thumbnail>
+      <div class="card-top">
+        <app-thumbnail [url]="players.get(1).thumbnail"></app-thumbnail>
       </div>
-      <div class="body">
-        {{ this.playerSymbols.getValue(2) }}
+      <div class="card-bottom">
+        <h4>{{ this.players.get(1).characterName }}</h4>
+        Símbolo: {{ this.playerSymbols.getValue(1) }}
       </div>
     </app-card>
   </div>
@@ -32,22 +40,21 @@
 <app-modal #gameOver [closeable]="false">
   <div class="container">
     <div class="centered-row">
-      <h3 class="col-auto title">Bem vindos ao Tic-Tac-Thanos!</h3>
+      <h3 class="col-auto title">{{ winner?.characterName }} ganhou!</h3>
     </div>
     <div class="centered-row">
-      <div class="col-auto">Jogadores, escolham seus personagens:</div>
+      <app-thumbnail
+        class="winner-thumbnail"
+        [url]="winner?.thumbnail"
+      ></app-thumbnail>
     </div>
-    <div class="row justify-content-between">
-      <div class="col-5 player-combo">
-        <div class="centered-row">
-          <app-thumbnail [url]="playerImageUrl.get(1)"></app-thumbnail>
-        </div>
-      </div>
-      <div class="centered-row">
-        <button class="btn btn-success col-auto" (click)="startGame()">
-          Jogar
-        </button>
-      </div>
+    <div class="centered-row">
+      <button class="btn btn-success col-auto" (click)="restartRound()">
+        Outra rodada
+      </button>
+      <button class="btn btn-secondary col-auto" (click)="restartGame()">
+        Reiniciar jogo
+      </button>
     </div>
   </div>
 </app-modal>

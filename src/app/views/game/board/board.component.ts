@@ -1,12 +1,21 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Subject, Subscription } from 'rxjs';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  OnDestroy,
+} from '@angular/core';
 
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.scss'],
 })
-export class BoardComponent implements OnInit {
+export class BoardComponent implements OnInit, OnDestroy {
   @Input() size = 3;
+  @Input() reset: Subject<void>;
   @Output() win = new EventEmitter<string>();
   sizeArray: number[];
   state = new Map<string, string>();
@@ -17,15 +26,27 @@ export class BoardComponent implements OnInit {
     [false, 'O'],
   ]);
 
+  reset$: Subscription;
+
   constructor() {}
 
   ngOnInit(): void {
     this.sizeArray = [...Array(this.size).keys()];
+    this.resetBoard();
+    this.reset$ = this.reset.subscribe(() => this.resetBoard());
+  }
+
+  ngOnDestroy(): void {
+    this.reset$.unsubscribe();
+  }
+
+  resetBoard(): void {
     for (let row = 0; row < this.size; row++) {
       for (let column = 0; column < this.size; column++) {
         this.state.set(`${row}, ${column}`, '');
       }
     }
+    this.xIsNext = true;
   }
 
   checkSquare(coords: string): void {

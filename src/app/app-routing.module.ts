@@ -14,7 +14,7 @@ const routes: Routes = [
     component: CharacterSelectionComponent,
   },
   {
-    path: 'game',
+    path: 'game/:player1/:player2',
     component: GameComponent,
   },
 ];

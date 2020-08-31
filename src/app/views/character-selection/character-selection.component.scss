@@ -11,13 +11,14 @@
   margin-bottom: 0.35 * $element-size;
 }
 
-.centered-row {
-  @extend .row;
-  justify-content: center;
-}
-
 .form-control {
   width: 1.4 * $element-size;
   margin-top: 0.1 * $element-size;
   justify-self: center;
+}
+
+.text-muted {
+  font-style: italic;
+  margin-bottom: 0.3rem;
+  font-size: 0.7rem;
 }

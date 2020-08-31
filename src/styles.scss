@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "src/variables.scss";
+@import "bootstrap";
 
 html {
   height: 100%;
@@ -36,4 +37,21 @@ html {
   background-color: $midtone-color !important;
   border-color: $midtone-color !important;
   color: $highlight-color !important;
+}
+
+.centered-row {
+  @extend .row;
+  justify-content: center;
+}
+
+.dropdown {
+  background-color: $shadow-faded;
+}
+
+.dropdown-item {
+  color: $text-color;
+}
+
+.dropdown-item.active {
+  background-color: $accent2-color !important;
 }
