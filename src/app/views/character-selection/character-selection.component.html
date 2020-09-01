@@ -62,7 +62,9 @@
         (click)="startGame()"
         [disabled]="!charactersSelected"
         [title]="
-          !charactersSelected ? 'Selecione os personagens para jogar' : ''
+          !charactersSelected
+            ? 'Selecione ambos os personagens para poder jogar'
+            : ''
         "
       >
         Jogar
