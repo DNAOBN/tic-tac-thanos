@@ -14,3 +14,7 @@ Projeto desenvolvido com o [Angular CLI](https://github.com/angular/angular-cli)
 - Digite parte do nome de um personagem da Marvel nos campos apresentados
 - Selecione um dos heróis da lista
 - Pronto!
+
+# Observações
+
+Podem ocorrer erros durante a execução devido a algumas bibliotecas utilizadas não terem versões atualizadas para a mais recente versão do Angular
