@@ -5,9 +5,13 @@
     [score2]="players.get(1).score"
   ></app-scoreboard>
 </div>
+<div class="next-player-container">Próximo jogador: {{ nextPlayer }}</div>
 <div class="game-screen">
   <div class="card-column">
-    <app-card>
+    <app-card
+      class="player-card"
+      [ngClass]="isCurrentPlayer(0) ? 'current-player' : ''"
+    >
       <div class="card-top">
         <app-thumbnail [url]="players.get(0).thumbnail"></app-thumbnail>
       </div>
@@ -21,11 +25,15 @@
     <app-board
       class="board"
       (win)="endGame($event)"
+      (next)="nextPlayer = $event"
       [reset]="restart"
     ></app-board>
   </div>
   <div class="card-column">
-    <app-card>
+    <app-card
+      class="player-card"
+      [ngClass]="isCurrentPlayer(1) ? 'current-player' : ''"
+    >
       <div class="card-top">
         <app-thumbnail [url]="players.get(1).thumbnail"></app-thumbnail>
       </div>

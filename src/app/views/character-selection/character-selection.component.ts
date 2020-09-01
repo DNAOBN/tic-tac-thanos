@@ -6,6 +6,7 @@ import { Component, ViewChild, AfterViewInit, OnInit } from '@angular/core';
 import { ModalComponent } from 'src/app/shared/modal/modal.component';
 import { switchMap, filter, tap, take, debounceTime } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-character-selection',
@@ -23,7 +24,11 @@ export class CharacterSelectionComponent implements OnInit, AfterViewInit {
   inputName$ = new Map<number, BehaviorSubject<string>>();
   searchResults$ = new Map<number, Observable<Character[]>>();
 
-  constructor(private marvel: MarvelService, private router: Router) {}
+  constructor(
+    private marvel: MarvelService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.createPlayers();
@@ -69,7 +74,10 @@ export class CharacterSelectionComponent implements OnInit, AfterViewInit {
       tap((results) => {
         console.log(results);
         if (!results.length) {
-          // TODO: Error
+          this.toastr.error(
+            `Não foi possível encontrar personagens com o nome "${player.value}"`,
+            'Personagem não encontrado!'
+          );
         }
       })
     );

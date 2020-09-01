@@ -15,7 +15,8 @@ export class GameComponent implements OnInit {
   @ViewChild('gameOver') gameOverModal: ModalComponent;
   players: Map<number, Player>;
   playerSymbols = new TwoWayMap<number, string>();
-  winner: Player;
+  nextPlayer: string;
+  winner: Player = {};
   restart = new Subject();
 
   constructor(
@@ -105,5 +106,9 @@ export class GameComponent implements OnInit {
 
   resetScore(): void {
     this.players.forEach((player) => (player.score = 0));
+  }
+
+  isCurrentPlayer(player: number): boolean {
+    return this.nextPlayer === this.playerSymbols.getValue(player);
   }
 }

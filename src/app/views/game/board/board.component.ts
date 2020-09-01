@@ -17,6 +17,7 @@ export class BoardComponent implements OnInit, OnDestroy {
   @Input() size = 3;
   @Input() reset: Subject<void>;
   @Output() win = new EventEmitter<string>();
+  @Output() next = new EventEmitter<string>();
   sizeArray: number[];
   state = new Map<string, string>();
 
@@ -47,12 +48,14 @@ export class BoardComponent implements OnInit, OnDestroy {
       }
     }
     this.xIsNext = true;
+    this.next.emit('X');
   }
 
   checkSquare(coords: string): void {
     this.state.set(coords, this.nextPlayer.get(this.xIsNext));
     this.checkForWin(coords);
     this.xIsNext = !this.xIsNext;
+    this.next.emit(this.nextPlayer.get(this.xIsNext));
   }
 
   checkForWin(coords: string): void {

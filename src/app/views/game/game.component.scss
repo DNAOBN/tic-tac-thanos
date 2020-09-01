@@ -1,6 +1,15 @@
 @import "src/variables.scss";
 @import "bootstrap";
 
+.player-card {
+  width: 1.7 * $element-size;
+}
+
+.current-player {
+  box-shadow: 0 0 0.3rem 0.3rem $accent-color,
+    inset 0 0 0.3rem 0.3rem $accent-color;
+}
+
 .game-screen {
   height: 100vh;
   display: flex;
@@ -38,6 +47,7 @@
 .title {
   margin-top: 0.15 * $element-size;
   margin-bottom: 0.25 * $element-size;
+  text-align: center;
 }
 
 .scoreboard {
@@ -49,6 +59,16 @@
   width: 100%;
   display: flex;
   justify-content: center;
+}
+
+.next-player-container {
+  position: absolute;
+  top: 90vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-self: flex-end;
+  color: rgba($text-color, 0.7);
 }
 
 .board {
@@ -64,8 +84,10 @@
 
 .btn-success {
   margin-right: 0.75rem;
+  margin-bottom: 0.15 * $element-size;
 }
 
 .btn-secondary {
   background-color: $highlight-color;
+  margin-bottom: 0.15 * $element-size;
 }
