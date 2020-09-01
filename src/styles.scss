@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~ngx-toastr/toastr";
 @import "src/variables.scss";
+@import "bootstrap";
 
 html {
   height: 100%;
@@ -8,7 +10,7 @@ html {
 }
 
 .modal-content {
-  background-color: rgba($shadow-color, 0.7);
+  background-color: $shadow-faded;
 }
 
 .modal-backdrop {
@@ -16,7 +18,7 @@ html {
 }
 
 .form-control {
-  background-color: $form-bg-color !important;
+  background-color: $shadow-faded !important;
   border: 1px solid $white-faded !important;
   color: $text-color !important;
 }
@@ -36,4 +38,21 @@ html {
   background-color: $midtone-color !important;
   border-color: $midtone-color !important;
   color: $highlight-color !important;
+}
+
+.centered-row {
+  @extend .row;
+  justify-content: center;
+}
+
+.dropdown {
+  background-color: $shadow-faded;
+}
+
+.dropdown-item {
+  color: $text-color;
+}
+
+.dropdown-item.active {
+  background-color: $accent2-color !important;
 }

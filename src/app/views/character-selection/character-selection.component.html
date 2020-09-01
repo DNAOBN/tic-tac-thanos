@@ -4,46 +4,72 @@
       <h3 class="col-auto title">Bem vindos ao Tic-Tac-Thanos!</h3>
     </div>
     <div class="centered-row">
-      <div class="col-auto">Jogadores, escolham seus personagens:</div>
+      <div class="col-auto text-center">
+        Jogadores, escolham seus personagens (procure pelo nome em inglês):
+      </div>
     </div>
     <div class="row justify-content-between">
       <div class="col-5 player-combo">
         <div class="centered-row">
-          <app-thumbnail [url]="playerImageUrl.get(1)"></app-thumbnail>
+          <app-thumbnail
+            [url]="characterSelected.get(0) ? players.get(0).thumbnail : ''"
+          ></app-thumbnail>
         </div>
         <div class="centered-row">
           <input
-            [(ngModel)]="player1"
+            [(ngModel)]="players.get(0).characterName"
+            (ngModelChange)="setPlayerName(0, $event)"
             typeaheadOptionField="name"
-            [typeahead]="results1$"
+            [typeahead]="searchResults$.get(0)"
             [typeaheadAsync]="true"
+            [typeaheadScrollable]="true"
+            [typeaheadOptionsInScrollableView]="7"
             typeaheadWaitMs="0"
-            (typeaheadOnSelect)="selectCharacter(1, $event.item)"
+            (typeaheadOnSelect)="selectCharacter(0, $event.item)"
             class="form-control"
             placeholder="Digite o nome..."
+            (keyup)="unsetSelected(0, $event)"
           />
         </div>
       </div>
       <div class="col-5 player-combo">
         <div class="centered-row">
-          <app-thumbnail [url]="playerImageUrl.get(2)"></app-thumbnail>
+          <app-thumbnail
+            [url]="characterSelected.get(1) ? players.get(1).thumbnail : ''"
+          ></app-thumbnail>
         </div>
         <div class="centered-row">
           <input
-            [(ngModel)]="player2"
+            [(ngModel)]="players.get(1).characterName"
+            (ngModelChange)="setPlayerName(1, $event)"
             typeaheadOptionField="name"
-            [typeahead]="results2$"
+            [typeahead]="searchResults$.get(1)"
             [typeaheadAsync]="true"
+            [typeaheadScrollable]="true"
+            [typeaheadOptionsInScrollableView]="7"
             typeaheadWaitMs="0"
-            (typeaheadOnSelect)="selectCharacter(2, $event.item)"
+            (typeaheadOnSelect)="selectCharacter(1, $event.item)"
             class="form-control"
             placeholder="Digite o nome..."
+            (keyup)="unsetSelected(1, $event)"
           />
         </div>
       </div>
     </div>
     <div class="centered-row">
-      <button class="btn btn-success col-auto">Jogar</button>
+      <button
+        class="btn btn-success col-auto"
+        (click)="startGame()"
+        [disabled]="!charactersSelected"
+        [title]="
+          !charactersSelected
+            ? 'Selecione ambos os personagens para poder jogar'
+            : ''
+        "
+      >
+        Jogar
+      </button>
     </div>
   </div>
+  <div class="float-right text-muted">In Memoriam, Chadwick Boseman</div>
 </app-modal>

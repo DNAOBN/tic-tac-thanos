@@ -1,0 +1,29 @@
+@import "src/variables.scss";
+
+.scoreboard {
+  height: 0.4 * $element-size;
+}
+
+.score {
+  width: 0.6 * $element-size;
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.15 * $element-size;
+  color: $text-color;
+}
+
+.left {
+  border-radius: 0.3rem 0 0 0.3rem;
+}
+
+.right {
+  border-radius: 0 0.3rem 0.3rem 0;
+}
+
+.greater {
+  background-color: $shadow-faded;
+}
+
+.smaller {
+  background-color: $white-faded;
+}

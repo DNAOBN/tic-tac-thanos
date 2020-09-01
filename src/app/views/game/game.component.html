@@ -1,0 +1,68 @@
+<div class="scoreboard-container">
+  <app-scoreboard
+    class="scoreboard"
+    [score1]="players.get(0).score"
+    [score2]="players.get(1).score"
+  ></app-scoreboard>
+</div>
+<div class="next-player-container">Próximo jogador: {{ nextPlayer }}</div>
+<div class="game-screen">
+  <div class="card-column">
+    <app-card
+      class="player-card"
+      [ngClass]="isCurrentPlayer(0) ? 'current-player' : ''"
+    >
+      <div class="card-top">
+        <app-thumbnail [url]="players.get(0).thumbnail"></app-thumbnail>
+      </div>
+      <div class="card-bottom">
+        <h4>{{ this.players.get(0).characterName }}</h4>
+        Símbolo: {{ this.playerSymbols.getValue(0) }}
+      </div>
+    </app-card>
+  </div>
+  <div class="game-column">
+    <app-board
+      class="board"
+      (win)="endGame($event)"
+      (next)="nextPlayer = $event"
+      [reset]="restart"
+    ></app-board>
+  </div>
+  <div class="card-column">
+    <app-card
+      class="player-card"
+      [ngClass]="isCurrentPlayer(1) ? 'current-player' : ''"
+    >
+      <div class="card-top">
+        <app-thumbnail [url]="players.get(1).thumbnail"></app-thumbnail>
+      </div>
+      <div class="card-bottom">
+        <h4>{{ this.players.get(1).characterName }}</h4>
+        Símbolo: {{ this.playerSymbols.getValue(1) }}
+      </div>
+    </app-card>
+  </div>
+</div>
+
+<app-modal #gameOver [closeable]="false">
+  <div class="container">
+    <div class="centered-row">
+      <h3 class="col-auto title">{{ winner?.characterName }} ganhou!</h3>
+    </div>
+    <div class="centered-row">
+      <app-thumbnail
+        class="winner-thumbnail"
+        [url]="winner?.thumbnail"
+      ></app-thumbnail>
+    </div>
+    <div class="centered-row">
+      <button class="btn btn-success col-auto" (click)="restartRound()">
+        Outra rodada
+      </button>
+      <button class="btn btn-secondary col-auto" (click)="restartGame()">
+        Reiniciar jogo
+      </button>
+    </div>
+  </div>
+</app-modal>

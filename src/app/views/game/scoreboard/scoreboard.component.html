@@ -1,0 +1,10 @@
+<table>
+  <tr class="scoreboard">
+    <td class="score left" [ngClass]="score1 > score2 ? 'greater' : 'smaller'">
+      {{ score1 }}
+    </td>
+    <td class="score right" [ngClass]="score2 > score1 ? 'greater' : 'smaller'">
+      {{ score2 }}
+    </td>
+  </tr>
+</table>

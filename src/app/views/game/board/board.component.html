@@ -1,0 +1,9 @@
+<div class="board-{{ size }}">
+  <app-square
+    *ngFor="let square of state | keyvalue"
+    class="square {{ getSquareClass(square.key) }}"
+    (clicked)="checkSquare(square.key)"
+    [content]="state.get(square.key)"
+    [disabled]="state.get(square.key)"
+  ></app-square>
+</div>

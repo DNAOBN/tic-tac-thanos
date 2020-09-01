@@ -6,13 +6,12 @@ $accent2-color: hsl(150, 100%, 30%);
 
 $text-color: hsl(150, 22%, 90%);
 $white-faded: rgba(#ffffff, 0.15);
+$shadow-faded: rgba($shadow-color, 0.7);
 
 $background-gradient: linear-gradient(
   to right bottom,
   $accent-color,
   $shadow-color
 );
-
-$form-bg-color: rgba($shadow-color, 0.7);
 
 $element-size: 7.5rem;
